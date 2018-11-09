@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  LevelsController.swift
 //  HackathonApp
 //
 //  Created by a.belkov on 09/11/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class LevelsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

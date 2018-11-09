@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  CharacterViewController.swift
 //  HackathonApp
 //
 //  Created by a.belkov on 09/11/2018.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CharacterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
 }
 
