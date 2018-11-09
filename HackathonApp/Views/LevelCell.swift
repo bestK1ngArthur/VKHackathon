@@ -10,9 +10,29 @@ import UIKit
 
 class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var achievements: [Achievement] = []
+    var achievements: [Achievement] = [] {
+        didSet {
+            if achievements.count < 3 {
+                var lastAchs = achievements
+                var achs: [Achievement] = [Achievement.empty, Achievement.empty, Achievement.empty]
+                while lastAchs.count > 0  {
+                    let position = Int.random(in: 0...2)
+                    if achs[position].isEmpty {
+                        achs[position] = lastAchs.first!
+                        lastAchs.removeFirst()
+                    }
+                }
+                self.cellsAchievements = achs
+            } else {
+                self.cellsAchievements = achievements
+            }
+            
+        }
+    }
+    var cellsAchievements: [Achievement] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,14 +42,14 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return achievements.count
+        return cellsAchievements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AchievementCell.self), for: indexPath) as? AchievementCell
         
-        cell?.titleLabel.text = String(achievements[indexPath.row].title.prefix(1))
+        cell?.fillCell(achievement: cellsAchievements[indexPath.row])
         
         return cell ?? UICollectionViewCell()
     }

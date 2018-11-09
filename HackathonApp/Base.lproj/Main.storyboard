@@ -75,16 +75,26 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-YY-9oZ">
+                                            <rect key="frame" x="16" y="8" width="343" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ehr-w2-qmr" secondAttribute="trailing" id="6FO-za-son"/>
                                         <constraint firstAttribute="bottom" secondItem="Ehr-w2-qmr" secondAttribute="bottom" id="TUI-MV-3cN"/>
+                                        <constraint firstItem="0Tm-YY-9oZ" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" constant="16" id="W5S-mr-xDc"/>
                                         <constraint firstItem="Ehr-w2-qmr" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" id="jA7-pI-ets"/>
+                                        <constraint firstAttribute="trailing" secondItem="0Tm-YY-9oZ" secondAttribute="trailing" constant="16" id="jSt-be-bhR"/>
+                                        <constraint firstItem="0Tm-YY-9oZ" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" constant="8" id="uNE-Gs-nT4"/>
                                         <constraint firstItem="Ehr-w2-qmr" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" id="xhz-Jz-LIp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="Ehr-w2-qmr" id="Bf1-1k-Gxd"/>
+                                    <outlet property="titleLabel" destination="0Tm-YY-9oZ" id="FmS-Pp-o7S"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

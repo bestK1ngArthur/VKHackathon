@@ -18,4 +18,18 @@ class AchievementCell: UICollectionViewCell {
         
         roundView.layer.cornerRadius = roundView.frame.height / 2
     }
+    
+    func fillCell(achievement: Achievement) {
+        
+        if achievement.isEmpty == false {
+            roundView.isHidden = false
+            titleLabel.text = String(achievement.title.prefix(1))
+        } else {
+            roundView.isHidden = true
+        }
+    }
+    
+    override func prepareForReuse() {
+        roundView.isHidden = false
+    }
 }
