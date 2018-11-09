@@ -11,41 +11,93 @@
     </dependencies>
     <scenes>
         <!--Стратегия-->
-        <scene sceneID="hNz-n2-bh7">
+        <scene sceneID="juq-RX-wzz">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="LevelsController" customModule="HackathonApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                <tableViewController id="hDp-oD-Bqb" customClass="LevelsController" customModule="HackathonApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="26n-xV-AaD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Стратегия" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="102.5" y="312" width="170" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тут будет стратегия" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="120" y="363" width="135.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Стратегия" image="levels" id="acW-dT-cKf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LevelCell" rowHeight="120" id="Dn1-Fo-g1U" customClass="LevelCell" customModule="HackathonApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dn1-Fo-g1U" id="SkA-TN-2cc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ehr-w2-qmr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XAu-Et-JAb">
+                                                <size key="itemSize" width="113" height="120"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AchievementCell" id="ZMg-LN-4MX" customClass="AchievementCell" customModule="HackathonApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="113" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="113" height="120"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7Q-YV-KTX">
+                                                                <rect key="frame" x="36.5" y="40" width="40" height="40"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="А" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbH-HB-d9M">
+                                                                        <rect key="frame" x="0.0" y="8" width="40" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="C2O-DB-9j2"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="pbH-HB-d9M" secondAttribute="trailing" id="Oj8-ol-Lsf"/>
+                                                                    <constraint firstItem="pbH-HB-d9M" firstAttribute="centerY" secondItem="T7Q-YV-KTX" secondAttribute="centerY" id="mqn-V8-lTL"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="nAt-b8-ech"/>
+                                                                    <constraint firstItem="pbH-HB-d9M" firstAttribute="leading" secondItem="T7Q-YV-KTX" secondAttribute="leading" id="qvh-Ba-hZA"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstItem="T7Q-YV-KTX" firstAttribute="centerX" secondItem="ZMg-LN-4MX" secondAttribute="centerX" id="DLy-Hg-xTI"/>
+                                                        <constraint firstItem="T7Q-YV-KTX" firstAttribute="centerY" secondItem="ZMg-LN-4MX" secondAttribute="centerY" id="sMn-GV-bm4"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="roundView" destination="T7Q-YV-KTX" id="S6F-jQ-Yof"/>
+                                                        <outlet property="titleLabel" destination="pbH-HB-d9M" id="boL-AR-rB6"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Ehr-w2-qmr" secondAttribute="trailing" id="6FO-za-son"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ehr-w2-qmr" secondAttribute="bottom" id="TUI-MV-3cN"/>
+                                        <constraint firstItem="Ehr-w2-qmr" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" id="jA7-pI-ets"/>
+                                        <constraint firstItem="Ehr-w2-qmr" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" id="xhz-Jz-LIp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="collectionView" destination="Ehr-w2-qmr" id="Bf1-1k-Gxd"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hDp-oD-Bqb" id="GAC-m0-dWY"/>
+                            <outlet property="delegate" destination="hDp-oD-Bqb" id="YUN-sJ-LpC"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Стратегия" image="levels" id="8Xy-CJ-0YN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhz-Os-l2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="749.60000000000002" y="-329.68515742128938"/>
         </scene>
         <!--Персонаж-->
         <scene sceneID="wg7-f3-ORb">
@@ -96,8 +148,8 @@
                         <color key="selectedImageTintColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="9iJ-5i-riA" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="hDp-oD-Bqb" kind="relationship" relationship="viewControllers" id="Qnc-WB-Csb"/>
+                        <segue destination="9iJ-5i-riA" kind="relationship" relationship="viewControllers" id="Uvl-dS-8t7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
