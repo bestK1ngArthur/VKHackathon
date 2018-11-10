@@ -30,6 +30,7 @@ class AchievementController: UITableViewController {
             addressLabel.text = achievement.address
             slider.setValue(Float(achievement.complexity), animated: true)
             urlLabel.text = achievement.url?.absoluteString
+            typeImageView.image = achievement.categoryImage
         }
     }
     

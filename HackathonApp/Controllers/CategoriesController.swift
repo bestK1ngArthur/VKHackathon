@@ -19,6 +19,12 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var usernameField: UITextField!
     
     let categories: [(image: UIImage, title: String)] = [(image: UIImage(named: "it_ic")!, title: "Информационные технологии"), (image: UIImage(named: "math_ic")!, title: "Математика"), (image: UIImage(named: "chem_ic")!, title: "Химия"), (image: UIImage(named: "bio_ic")!, title: "Биология"), (image: UIImage(named: "phys_ic")!, title: "Физика"), (image: UIImage(named: "proj_ic")!, title: "Проектная смена")]
+    var selectedCategories: [String: String] = ["Информационные технологии": "",
+                                                "Математика": "",
+                                                "Химия": "",
+                                                "Биология": "",
+                                                "Физика": "",
+                                                "Проектная смена": ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,30 +49,77 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell ?? UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let title = categories[indexPath.row].title
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if let cell = cell {
+            selectedCategories[title] = cell.isSelected ? "X" : ""
+        }
+    }
+    
     @IBAction func signUp(_ sender: Any) {
         self.startActivity()
         
-        Alamofire.request("http://95.213.28.140:8080/?method=register&name=\(usernameField.text)&region=Moscow&stream1=X&lvl1=8&stream2=&lvl2=0&stream3=&lvl3=0&stream4=&lvl4=0&stream5=&lvl5=0&stream6=&lvl6=0").responseJSON { response in
-            
+        let string = "http://95.213.28.140:8080/?method=register&name=\(usernameField.text ?? "")&region=Moscow&stream1=\(selectedCategories["Информационные технологии"]!)&lvl1=8&stream2=\(selectedCategories["Математика"]!)&lvl2=0&stream3=\(selectedCategories["Химия"]!)&lvl3=0&stream4=\(selectedCategories["Биология"]!)&lvl4=0&stream5=\(selectedCategories["Физика"]!)&lvl5=0&stream6=\(selectedCategories["Проектная смена"]!)&lvl6=0"
+        let url = URL(string: string)!
+        
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             self.stopActivity()
             
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result)")                         // response serialization result
+            guard let data = data else { return }
+            print(String(data: data, encoding: .utf8)!)
             
-            if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
+            let dataString = String(data: data, encoding: .utf8)!
+            let jsonString = "{\(dataString.split(separator: "{").last!.split(separator: "}").first!)}"
+            
+            if let jsonData = jsonString.data(using: String.Encoding.utf8) {
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? Dictionary<String, Any>
+                    
+                    if let userID = json?["user_id"] as? Int {
+                        AppManager.shared.currentUserID = userID
+                        AppManager.shared.currentUserName = self.usernameField.text
+                    }
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                } catch {
+                    print("ERROR")
+                    
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             }
+            
+            self.dismiss(animated: true, completion: nil)
         }
+        
+        task.resume()
     }
  
     func startActivity() {
-        self.activityView.isHidden = false
-        self.activityIndicator.startAnimating()
+
+        DispatchQueue.main.async {
+            self.activityView.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
     }
     
     func stopActivity() {
-        self.activityView.isHidden = true
-        self.activityIndicator.stopAnimating()
+        
+        DispatchQueue.main.async {
+            self.activityView.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect.zero)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
 }

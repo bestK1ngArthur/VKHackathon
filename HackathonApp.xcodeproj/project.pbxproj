@@ -21,6 +21,7 @@
 		6A5848412196E31400A3B63B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5848402196E31400A3B63B /* DrawingView.swift */; };
 		6A584843219700AF00A3B63B /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A584842219700AF00A3B63B /* AchievementController.swift */; };
 		6A5848452197160B00A3B63B /* AddAchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5848442197160B00A3B63B /* AddAchievementController.swift */; };
+		6A8CCAAF21976FE8006B3E93 /* Achievements.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6A8CCAAE21976FE8006B3E93 /* Achievements.csv */; };
 		6AFCA96F2197254C00E34E75 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFCA96E2197254C00E34E75 /* AppManager.swift */; };
 		6AFCA9712197370900E34E75 /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFCA9702197370900E34E75 /* CategoriesController.swift */; };
 		88B315969BB7E3E42154B1E0 /* Pods_HackathonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87794CFDC89572DAFAA48175 /* Pods_HackathonApp.framework */; };
@@ -44,6 +45,7 @@
 		6A5848402196E31400A3B63B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		6A584842219700AF00A3B63B /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
 		6A5848442197160B00A3B63B /* AddAchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAchievementController.swift; sourceTree = "<group>"; };
+		6A8CCAAE21976FE8006B3E93 /* Achievements.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Achievements.csv; path = ../../../../Downloads/Achievements.csv; sourceTree = "<group>"; };
 		6AFCA96E2197254C00E34E75 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		6AFCA9702197370900E34E75 /* CategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
 		87794CFDC89572DAFAA48175 /* Pods_HackathonApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackathonApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				6A58481F2195E1FE00A3B63B /* AppDelegate.swift */,
-				6A58483C2196001300A3B63B /* LevelsContainer.swift */,
 				6AFCA96E2197254C00E34E75 /* AppManager.swift */,
+				6A58483C2196001300A3B63B /* LevelsContainer.swift */,
 				6A5848392195F35300A3B63B /* Model */,
 				6A5848382195F34C00A3B63B /* Views */,
 				6A5848332195E2C300A3B63B /* Controllers */,
@@ -101,6 +103,7 @@
 				6A5848282195E1FF00A3B63B /* Assets.xcassets */,
 				6A58482A2195E1FF00A3B63B /* LaunchScreen.storyboard */,
 				6A58482D2195E1FF00A3B63B /* Info.plist */,
+				6A8CCAAE21976FE8006B3E93 /* Achievements.csv */,
 			);
 			path = HackathonApp;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				6A58482C2195E1FF00A3B63B /* LaunchScreen.storyboard in Resources */,
 				6A5848292195E1FF00A3B63B /* Assets.xcassets in Resources */,
+				6A8CCAAF21976FE8006B3E93 /* Achievements.csv in Resources */,
 				6A5848272195E1FE00A3B63B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,10 +244,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackathonApp/Pods-HackathonApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSV.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

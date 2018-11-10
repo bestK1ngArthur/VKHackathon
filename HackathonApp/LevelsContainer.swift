@@ -13,7 +13,7 @@ class LevelsContainer {
     private(set) var levels: [Level]
     private(set) var paths: [Path]
     private let achievements: [Achievement]
-    
+        
     init(achievements: [Achievement]) {
         self.achievements = achievements
         self.levels = []
