@@ -13,6 +13,8 @@ class AchievementCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var roundView: UIView!
     
+    var achievement: Achievement?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -27,6 +29,8 @@ class AchievementCell: UICollectionViewCell {
         } else {
             roundView.isHidden = true
         }
+        
+        self.achievement = achievement
     }
     
     override func prepareForReuse() {

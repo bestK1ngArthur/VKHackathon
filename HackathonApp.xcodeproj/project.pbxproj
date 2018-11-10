@@ -19,6 +19,8 @@
 		6A58483D2196001300A3B63B /* LevelsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58483C2196001300A3B63B /* LevelsContainer.swift */; };
 		6A58483F219600B000A3B63B /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58483E219600B000A3B63B /* Level.swift */; };
 		6A5848412196E31400A3B63B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5848402196E31400A3B63B /* DrawingView.swift */; };
+		6A584843219700AF00A3B63B /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A584842219700AF00A3B63B /* AchievementController.swift */; };
+		6A5848452197160B00A3B63B /* AddAchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5848442197160B00A3B63B /* AddAchievementController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		6A58483C2196001300A3B63B /* LevelsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsContainer.swift; sourceTree = "<group>"; };
 		6A58483E219600B000A3B63B /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		6A5848402196E31400A3B63B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		6A584842219700AF00A3B63B /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		6A5848442197160B00A3B63B /* AddAchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAchievementController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 			children = (
 				6A5848212195E1FE00A3B63B /* LevelsController.swift */,
 				6A5848232195E1FE00A3B63B /* CharacterViewController.swift */,
+				6A584842219700AF00A3B63B /* AchievementController.swift */,
+				6A5848442197160B00A3B63B /* AddAchievementController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,11 +188,13 @@
 			files = (
 				6A5848242195E1FE00A3B63B /* CharacterViewController.swift in Sources */,
 				6A58483B2195F41C00A3B63B /* AchievementCell.swift in Sources */,
+				6A5848452197160B00A3B63B /* AddAchievementController.swift in Sources */,
 				6A5848202195E1FE00A3B63B /* AppDelegate.swift in Sources */,
 				6A5848352195E9EB00A3B63B /* Achievement.swift in Sources */,
 				6A5848372195F31700A3B63B /* LevelCell.swift in Sources */,
 				6A58483D2196001300A3B63B /* LevelsContainer.swift in Sources */,
 				6A5848412196E31400A3B63B /* DrawingView.swift in Sources */,
+				6A584843219700AF00A3B63B /* AchievementController.swift in Sources */,
 				6A58483F219600B000A3B63B /* Level.swift in Sources */,
 				6A5848222195E1FE00A3B63B /* LevelsController.swift in Sources */,
 			);

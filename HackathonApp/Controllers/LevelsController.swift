@@ -48,5 +48,16 @@ class LevelsController: UITableViewController {
         
         return cell ?? UITableViewCell()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "OpenAchievement" {
+            let viewController: AchievementController? = (segue.destination as? UINavigationController)?.viewControllers.last as? AchievementController
+            
+            if let vc = viewController, let cell = sender as? AchievementCell, let ach = cell.achievement  {
+                vc.achievement = ach
+            }
+        }
+    }
 }
 
