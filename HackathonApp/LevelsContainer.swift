@@ -114,7 +114,45 @@ class LevelsContainer {
     
     private func calculatePaths() {
         
-        //
+        var paths: [Path] = []
+        
+        var lastLayer: Layer? = nil
+        for (index, level) in levels.enumerated() {
+            
+            if levels.indices.contains(index+1) {
+                let nextLevel = levels[index+1]
+                
+                let fromIndexes = indexesOfFilledAchievements(level.achievements)
+                let toIndexes = indexesOfFilledAchievements(nextLevel.achievements)
+                
+                let layer = calculateLayer(from: fromIndexes, to: toIndexes)
+                
+                if let lastLayer = lastLayer {
+                    paths.append((from: lastLayer, to: layer))
+                } else {
+                    paths.append((from: [:], to: layer))
+                }
+                
+                lastLayer = layer
+                
+            } else if index == (levels.count - 1), let last = lastLayer {
+                paths.append((from: last, to: [:]))
+            }
+        }
+        
+        self.paths = paths
+    }
+    
+    private func indexesOfFilledAchievements(_ achievements: [Achievement]) -> [Int] {
+        
+        var achievementsIndexes: [Int] = []
+        for (index, achievement) in achievements.enumerated() {
+            if !achievement.isEmpty {
+                achievementsIndexes.append(index)
+            }
+        }
+        
+        return achievementsIndexes
     }
     
     private func calculateLayer(from: [Int], to: [Int]) -> Layer {

@@ -23,17 +23,23 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     var achievements: [Achievement] = [] {
         didSet {
-            drawPaths()
+//            drawPaths()
         }
     }
     
     var fromAchievements: [Achievement] = [] {
         didSet {
-            drawPaths()
+//            drawPaths()
         }
     }
     
     var toAchievements: [Achievement] = [] {
+        didSet {
+//            drawPaths()
+        }
+    }
+    
+    var path: Path = (from: [:], to: [:]) {
         didSet {
             drawPaths()
         }
@@ -120,8 +126,9 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     func drawPaths() {
         
-        let paths = calculatePaths()
-        self.drawingView.drawPaths(paths)
+        //let paths = calculatePaths()
+        let path = self.path
+        self.drawingView.drawPaths(path)
     }
     
     func indexesOfFilledAchievements(_ achievements: [Achievement]) -> [Int] {

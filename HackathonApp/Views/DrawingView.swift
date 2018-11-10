@@ -21,6 +21,8 @@ class DrawingView: UIView {
         
         self.backgroundColor = UIColor.clear
         
+        let width: CGFloat = 5
+        
         guard let paths = self.paths else {
             return
         }
@@ -43,7 +45,7 @@ class DrawingView: UIView {
                     //                    path.stroke()
 
                     let context = UIGraphicsGetCurrentContext()
-                    context!.setLineWidth(2.0)
+                    context!.setLineWidth(width)
                     context!.setStrokeColor(UIColor.orange.cgColor)
                     context?.setFillColor(red: 0, green: 0, blue: 0, alpha: 0)
                     context?.move(to: fromPoint)
@@ -76,7 +78,7 @@ class DrawingView: UIView {
                     //                    path.stroke()
                     
                     let context = UIGraphicsGetCurrentContext()
-                    context!.setLineWidth(2.0)
+                    context!.setLineWidth(width)
                     context!.setStrokeColor(UIColor.orange.cgColor)
                     context?.setFillColor(red: 0, green: 0, blue: 0, alpha: 0)
                     context?.move(to: fromPoint)
@@ -98,23 +100,23 @@ class DrawingView: UIView {
 
     func point(index: Int, type: PointType) -> CGPoint {
 
-        let section: CGFloat = self.frame.width / 4
-        let x = section * CGFloat(index) + section
+//        let section: CGFloat = self.frame.width / 4
+//        let x = section * CGFloat(index) + section
 
 //        let section: CGFloat = 67
 //        let x = section * CGFloat(index) + 57
         
-//        var x: CGFloat = 0
-//        switch index {
-//        case 0:
-//            x = 57
-//        case 1:
-//            x = 57
-//        case 2:
-//            x = self.frame.width - 57
-//        default:
-//            break
-//        }
+        var x: CGFloat = 0
+        switch index {
+        case 0:
+            x = 57
+        case 1:
+            x = self.frame.width / 2 - 10
+        case 2:
+            x = self.frame.width - 75
+        default:
+            break
+        }
         
         var y: CGFloat = 0
         switch type {
@@ -131,18 +133,22 @@ class DrawingView: UIView {
     
     func middlePoint(from: CGPoint, to: CGPoint) -> CGPoint {
         
+        let interval: CGFloat = 50
+        
         var x: CGFloat = 0
         if from.x == to.x {
             x = from.x
         } else {
-            x = CGFloat.random(in: (from.x > to.x) ? to.x..<from.x : from.x..<to.x)
+//            x = CGFloat.random(in: (from.x > to.x) ? to.x..<from.x : from.x..<to.x)
+            x = (from.x + to.x) / 2 + interval
         }
         
         var y: CGFloat = 0
         if from.y == to.y {
             y = from.y
         } else {
-            y = CGFloat.random(in: (from.y > to.y) ? to.y..<from.y : from.y..<to.y)
+//            y = CGFloat.random(in: (from.y > to.y) ? to.y..<from.y : from.y..<to.y)
+            y = (from.y + to.y) / 2 + interval
         }
         
         return CGPoint(x: x, y: y)
