@@ -16,6 +16,10 @@ class AchievementController: UITableViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var completedView: UIView!
+    
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var markButton: UIButton!
     
     var achievement: Achievement?
     
@@ -31,6 +35,16 @@ class AchievementController: UITableViewController {
             slider.setValue(Float(achievement.complexity), animated: true)
             urlLabel.text = achievement.url?.absoluteString
             typeImageView.image = achievement.categoryImage
+            completedView.isHidden = !achievement.isCompleted
+            
+            goButton.isEnabled = !achievement.isCompleted
+            
+            if achievement.isCompleted {
+                goButton.isEnabled = false
+                goButton.backgroundColor = UIColor.lightGray
+                goButton.setTitle("Награда получена", for: .normal)
+                markButton.isHidden = true
+            }
         }
     }
     

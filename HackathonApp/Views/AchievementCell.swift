@@ -13,6 +13,7 @@ class AchievementCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var completedView: UIView!
     
     var achievement: Achievement?
     
@@ -20,6 +21,8 @@ class AchievementCell: UICollectionViewCell {
         super.awakeFromNib()
         
         roundView.layer.cornerRadius = roundView.frame.height / 2
+        
+        completedView.isHidden = true
     }
     
     func fillCell(achievement: Achievement) {
@@ -28,6 +31,7 @@ class AchievementCell: UICollectionViewCell {
             roundView.isHidden = false
             titleLabel.text = String(achievement.title.prefix(1))
         } else {
+            completedView.isHidden = true
             roundView.isHidden = true
         }
         
@@ -38,9 +42,11 @@ class AchievementCell: UICollectionViewCell {
         //self.imageView.image = categoryImage
         
         self.imageView.image = achievement.categoryImage
+        self.completedView.isHidden = !achievement.isCompleted
     }
     
     override func prepareForReuse() {
         roundView.isHidden = false
+        completedView.isHidden = true
     }
 }

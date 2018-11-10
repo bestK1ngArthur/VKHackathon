@@ -68,6 +68,8 @@ class AppManager {
                 var title: String = ""
                 var description: String = ""
                 var address: String = ""
+                var category: Achievement.Category = .it
+                
                 var url: URL?
                 var complexity: Double = 1
                 
@@ -84,14 +86,18 @@ class AppManager {
                 }
                 
                 if values.indices.contains(1) {
-                    complexity = Double(values[1]) ?? 1
+                    url = URL(string: values[1])
                 }
                 
                 if values.indices.contains(9) {
                     complexity = Double(values[9]) ?? 1
                 }
                 
-                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: false)
+                if values.indices.contains(5) {
+                    category = Achievement.Category(rawValue: values[5]) ?? .it
+                }
+                
+                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: true, category: category)
                 
                 achievements.append(achievement)
             }
