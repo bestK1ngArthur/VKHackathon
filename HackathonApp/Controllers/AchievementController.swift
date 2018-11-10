@@ -15,7 +15,7 @@ class AchievementController: UITableViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var completedView: UIView!
     
     @IBOutlet weak var goButton: UIButton!
@@ -33,7 +33,7 @@ class AchievementController: UITableViewController {
             descriptionLabel.text = achievement.description
             addressLabel.text = achievement.address
             slider.setValue(Float(achievement.complexity), animated: true)
-            urlLabel.text = achievement.url?.absoluteString
+            urlButton.setTitle(achievement.url?.absoluteString, for: .normal)
             typeImageView.image = achievement.categoryImage
             completedView.isHidden = !achievement.isCompleted
             
@@ -44,6 +44,7 @@ class AchievementController: UITableViewController {
                 goButton.backgroundColor = UIColor.lightGray
                 goButton.setTitle("Награда получена", for: .normal)
                 markButton.isHidden = true
+                
             }
         }
     }
@@ -62,5 +63,14 @@ class AchievementController: UITableViewController {
     }
     
     @IBAction func markAction(_ sender: Any) {
+    }
+    
+    @IBAction func openUrl(_ sender: Any) {
+        
+        if let url = achievement?.url, UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:]) { (completed) in
+                return
+            }
+        }
     }
 }

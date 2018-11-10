@@ -65,6 +65,12 @@ class AppManager {
                 let rowString = "\(row)"
                 let values = rowString.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "").components(separatedBy: ";")
                 
+                if values.indices.contains(2) {
+                    if values[2] == "name " {
+                        continue
+                    }
+                }
+                
                 var title: String = ""
                 var description: String = ""
                 var address: String = ""
