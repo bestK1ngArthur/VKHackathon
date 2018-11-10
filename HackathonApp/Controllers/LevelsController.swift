@@ -102,6 +102,18 @@ class LevelsController: UITableViewController {
         return cell ?? UITableViewCell()
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == "OpenAchievement" {
+            
+            if let cell = sender as? AchievementCell, let ach = cell.achievement  {
+                return !ach.isEmpty
+            }
+        }
+        
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "OpenAchievement" {

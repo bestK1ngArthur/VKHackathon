@@ -63,7 +63,7 @@ class AppManager {
             for row in rows {
                 
                 let rowString = "\(row)"
-                let values = rowString.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "").components(separatedBy: ";")
+                let values = rowString.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "\r", with: "").components(separatedBy: ";")
                 
                 if values.indices.contains(2) {
                     if values[2] == "name " {
@@ -96,7 +96,7 @@ class AppManager {
                 }
                 
                 if values.indices.contains(9) {
-                    complexity = Double(values[9]) ?? 1
+                    complexity = Double(values[9]) ?? Double.random(in: 0...10)
                 }
                 
                 if values.indices.contains(5) {
@@ -148,7 +148,7 @@ class AppManager {
 //
 //            achievements.append(achievement)
 //        }
-//
+
         self.achievements = achievements
     }
     
