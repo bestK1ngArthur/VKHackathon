@@ -24,8 +24,47 @@ class LevelsController: UITableViewController {
         self.levels = container.levels
         self.paths = container.paths
         
+        printPaths()
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        self.tableView.register(UINib(nibName: "LevelCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+    
+    func printPaths() {
+        
+        for path in self.paths {
+            
+            var string = "from: ("
+            for el in path.from.keys {
+                string += "\(el) -> ("
+                path.from[el]?.forEach({ (val) in
+                    string += "\(val),"
+                })
+                string.removeLast()
+                string += ") ,"
+            }
+            
+            string.removeLast()
+            string.removeLast()
+
+            string += "\nto: ("
+            for el in path.to.keys {
+                string += "\(el) -> ("
+                path.to[el]?.forEach({ (val) in
+                    string += "\(val),"
+                })
+                string.removeLast()
+                string += "), "
+            }
+            
+            string.removeLast()
+            string.removeLast()
+            string += ")"
+            
+            print(string)
+        }
     }
     
     @objc func refreshData(refreshControl: UIRefreshControl) {
@@ -85,7 +124,10 @@ class LevelsController: UITableViewController {
         let level = levels[indexPath.row]
         let path = paths[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LevelCell.self), for: indexPath) as? LevelCell
+        let cell = Bundle.main.loadNibNamed("LevelCell", owner: nil, options: nil)?.first as? LevelCell
+                
+//        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LevelCell.self), for: indexPath) as? LevelCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LevelCell.self)) as? LevelCell
         
         cell?.titleLabel.text = level.title
         cell?.achievements = level.achievements

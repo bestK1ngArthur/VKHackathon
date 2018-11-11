@@ -75,6 +75,7 @@ class AppManager {
                 var description: String = ""
                 var address: String = ""
                 var category: Achievement.Category = .it
+                var isCompleted: Bool = false
                 
                 var url: URL?
                 var complexity: Double = 1
@@ -103,7 +104,11 @@ class AppManager {
                     category = Achievement.Category(rawValue: values[5]) ?? .it
                 }
                 
-                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: true, category: category)
+                if values.indices.contains(7) {
+                    isCompleted = Int(values[7]) == 1
+                }
+                
+                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: isCompleted, category: category)
                 
                 achievements.append(achievement)
             }

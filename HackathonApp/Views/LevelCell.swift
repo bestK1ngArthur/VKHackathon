@@ -50,6 +50,8 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
 
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.register(UINib(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "AchievementCell")
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,6 +131,9 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         //let paths = calculatePaths()
         let path = self.path
         self.drawingView.drawPaths(path)
+        
+        self.setNeedsDisplay()
+        self.layoutIfNeeded()
     }
     
     func indexesOfFilledAchievements(_ achievements: [Achievement]) -> [Int] {
@@ -141,5 +146,14 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         }
         
         return achievementsIndexes
+    }
+    
+    override func prepareForReuse() {
+        self.achievements.removeAll()
+        self.toAchievements.removeAll()
+        self.fromAchievements.removeAll()
+        self.path = (from: [:], to: [:])
+        
+        self.drawPaths()
     }
 }
