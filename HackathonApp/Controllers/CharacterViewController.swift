@@ -18,6 +18,7 @@ class CharacterViewController: UIViewController {
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var levelProgressLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class CharacterViewController: UIViewController {
 //        self.characterImageView.startAnimating()
         
         self.characterImageView.image = AppManager.shared.characterImage
+        self.levelProgressLabel.isHidden = true
         
         self.stopActivity()
     }
@@ -52,13 +54,15 @@ class CharacterViewController: UIViewController {
         }
         
         self.levelValueLabel.text = "\(Int(oldLevel))"
+        self.levelProgressLabel.text = "\(Int(oldLevel) % 10)/10"
         
-        let delta = Float(newLevel - oldLevel)
+        let delta = Float(Double(Int(newLevel)) - oldLevel)
         
         if Int(newLevel) != Int(oldLevel) {
             UIView.animate(withDuration: 0.15, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 
                 self.levelValueLabel.text = "\(Int(newLevel))"
+                self.levelProgressLabel.text = "\(Int(newLevel) % 10)/10"
                 self.levelValueLabel.transform = self.levelValueLabel.transform.scaledBy(x: 1.5, y: 1.5)
                 
                 self.characterImageView.alpha = 0

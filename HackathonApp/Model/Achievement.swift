@@ -25,9 +25,10 @@ class Achievement {
     let url: URL?
     let complexity: Double
     var isCompleted: Bool
+    let date: String?
     let category: Category
     
-    init(title: String, description: String, address: String, url: URL? = nil, complexity: Double, isCompleted: Bool, category: Category = .it) {
+    init(title: String, description: String, address: String, url: URL? = nil, complexity: Double, isCompleted: Bool, date: String? = nil, category: Category = .it) {
         self.title = title
         self.description = description
         self.address = address
@@ -35,6 +36,7 @@ class Achievement {
         self.complexity = complexity
         self.isCompleted = isCompleted
         self.category = category
+        self.date = date
     }
     
     static var empty: Achievement {

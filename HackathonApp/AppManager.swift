@@ -104,9 +104,18 @@ class AppManager {
                 var address: String = ""
                 var category: Achievement.Category = .it
                 var isCompleted: Bool = false
+                var date: String = "22.11.2018"
                 
                 var url: URL?
                 var complexity: Double = 1
+                
+                if values.indices.contains(2) {
+                    title = values[2]
+                }
+                
+                if values.indices.contains(3) {
+                    date = values[3]
+                }
                 
                 if values.indices.contains(2) {
                     title = values[2]
@@ -136,7 +145,7 @@ class AppManager {
                     isCompleted = Int(values[7]) == 1
                 }
                 
-                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: isCompleted, category: category)
+                let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: isCompleted, date: date, category: category)
                 
                 achievements.append(achievement)
             }

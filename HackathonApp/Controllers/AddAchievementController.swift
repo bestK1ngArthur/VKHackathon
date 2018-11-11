@@ -65,6 +65,5 @@ class AddAchievementController: UITableViewController, UIPickerViewDelegate, UIP
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return AppManager.shared.categories[row].title
-
     }
 }
