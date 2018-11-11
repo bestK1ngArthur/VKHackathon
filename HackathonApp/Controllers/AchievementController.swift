@@ -68,6 +68,14 @@ class AchievementController: UITableViewController {
     }
     
     @IBAction func markAction(_ sender: Any) {
+        
+        guard let ach = achievement else {
+            return
+        }
+
+        AppManager.shared.completeAchievement(ach)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func openUrl(_ sender: Any) {

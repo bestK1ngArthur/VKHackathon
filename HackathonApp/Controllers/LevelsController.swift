@@ -45,6 +45,8 @@ class LevelsController: UITableViewController {
             self.paths = container.paths
             
             AppManager.shared.needToUpdateLevels = false
+            
+            self.updateTable()
         }
     }
     

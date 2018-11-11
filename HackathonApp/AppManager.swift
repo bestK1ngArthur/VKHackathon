@@ -18,6 +18,7 @@ class AppManager {
     init() {
         loadAchievements()
         loadUserAchievements()
+        updateUserLevel()
     }
     
     var needToUpdateLevels: Bool = false
@@ -54,6 +55,16 @@ class AppManager {
         
         get {
             return Achievement.Category(rawValue: (UserDefaults.standard.string(forKey: "category") ?? "")) ?? .chem
+        }
+    }
+    
+    var currentUserLevel: Double {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "user_level")
+        }
+        
+        get {
+            return UserDefaults.standard.double(forKey: "user_level")
         }
     }
     
@@ -193,5 +204,36 @@ class AppManager {
     func addUserAchievement(_ achievement: Achievement) {
         self.userAchievements.append(achievement)
         self.needToUpdateLevels = true
+    }
+    
+    func completeAchievement(_ achievement: Achievement) {
+        
+        if let achIndex = self.allAchievements.firstIndex(where: { (ch) -> Bool in
+            return (achievement.title == ch.title) && (achievement.description == ch.description)
+        }) {
+            let ach = self.allAchievements[achIndex]
+            ach.isCompleted = true
+            self.allAchievements[achIndex] = ach
+        }
+        
+        if let achIndex = self.userAchievements.firstIndex(where: { (ch) -> Bool in
+            return (achievement.title == ch.title) && (achievement.description == ch.description)
+        }) {
+            let ach = self.userAchievements[achIndex]
+            ach.isCompleted = true
+            self.userAchievements[achIndex] = ach
+        }
+        
+        needToUpdateLevels = true
+    }
+    
+    func updateUserLevel() {
+        
+        var level: Double = 0
+        for achievement in self.userAchievements where achievement.isCompleted {
+            level += achievement.complexity / 8
+        }
+        
+        currentUserLevel = level
     }
 }

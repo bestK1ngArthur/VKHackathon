@@ -403,7 +403,7 @@
                                 <rect key="frame" x="47.5" y="83.5" width="280" height="500"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chemistry_0" translatesAutoresizingMaskIntoConstraints="NO" id="WRO-N7-vyT">
-                                        <rect key="frame" x="20" y="50" width="240" height="400"/>
+                                        <rect key="frame" x="10" y="50" width="240" height="400"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="c1J-vN-UTZ"/>
                                             <constraint firstAttribute="height" constant="400" id="dS2-EB-1G4"/>
@@ -418,7 +418,7 @@
                                     <constraint firstItem="WRO-N7-vyT" firstAttribute="centerY" secondItem="CIc-Uq-Lre" secondAttribute="centerY" id="EmF-bv-KlU"/>
                                     <constraint firstAttribute="height" constant="500" id="a2j-6L-rAp"/>
                                     <constraint firstAttribute="width" constant="280" id="hha-en-0Ka"/>
-                                    <constraint firstItem="WRO-N7-vyT" firstAttribute="centerX" secondItem="CIc-Uq-Lre" secondAttribute="centerX" id="yvg-Qt-fex"/>
+                                    <constraint firstItem="WRO-N7-vyT" firstAttribute="centerX" secondItem="CIc-Uq-Lre" secondAttribute="centerX" constant="-10" id="yvg-Qt-fex"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="140"/>
@@ -455,15 +455,25 @@
                                     <segue destination="ZLu-3r-FTg" kind="presentation" id="eX9-LK-Pzf"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8yT-e1-hSw">
+                                <rect key="frame" x="0.0" y="616" width="375" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="4fn-FY-MCn"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.98227947950000005" green="0.65761703049999998" blue="0.12629829510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8yT-e1-hSw" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="78e-5r-aYT"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="14V-lO-Vsj" secondAttribute="trailing" constant="16" id="LRz-Lh-iqe"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="HCS-VB-5GX" secondAttribute="bottom" constant="16" id="UjM-5f-mO0"/>
                             <constraint firstItem="qmF-iI-7ex" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="WYL-85-w5f"/>
                             <constraint firstItem="CIc-Uq-Lre" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Wbd-73-3nY"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="14V-lO-Vsj" secondAttribute="bottom" constant="16" id="aqE-07-dfr"/>
                             <constraint firstItem="CIc-Uq-Lre" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="h3K-ha-3wi"/>
+                            <constraint firstItem="8yT-e1-hSw" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="ji5-ap-AaT"/>
+                            <constraint firstAttribute="trailing" secondItem="8yT-e1-hSw" secondAttribute="trailing" id="rCK-2w-dIu"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="qmF-iI-7ex" secondAttribute="bottom" constant="16" id="urm-iN-7fS"/>
                             <constraint firstItem="HCS-VB-5GX" firstAttribute="leading" secondItem="qmF-iI-7ex" secondAttribute="trailing" constant="4" id="xYB-Zs-9w0"/>
                         </constraints>
@@ -482,6 +492,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="characterImageView" destination="WRO-N7-vyT" id="4c1-BW-sIj"/>
+                        <outlet property="levelValueLabel" destination="HCS-VB-5GX" id="Hqz-rd-ArV"/>
+                        <outlet property="progressView" destination="8yT-e1-hSw" id="stJ-gr-SsR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

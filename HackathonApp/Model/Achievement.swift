@@ -24,7 +24,7 @@ class Achievement {
     let address: String
     let url: URL?
     let complexity: Double
-    let isCompleted: Bool
+    var isCompleted: Bool
     let category: Category
     
     init(title: String, description: String, address: String, url: URL? = nil, complexity: Double, isCompleted: Bool, category: Category = .it) {
