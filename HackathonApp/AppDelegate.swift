@@ -7,10 +7,28 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, VKSdkDelegate, VKSdkUIDelegate {
+    
+    func vkSdkShouldPresent(_ controller: UIViewController!) {
+        
+        return
+    }
+    
+    func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
+        return
+    }
+    
+    func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
+        print(result)
+    }
+    
+    func vkSdkUserAuthorizationFailed() {
+        print("АШИБКА В ВК")
+    }
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -18,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let _ = AppManager.shared
         
+        let vk = VKSdk.initialize(withAppId: "6748294")
+        vk?.register(self)
+        vk?.uiDelegate = self
+                
         return true
     }
 
@@ -41,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        VKSdk.processOpen(url, fromApplication: sourceApplication)
+        return true
+
     }
 }
 

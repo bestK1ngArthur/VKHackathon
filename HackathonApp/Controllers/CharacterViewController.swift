@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
 class CharacterViewController: UIViewController {
 
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var levelValueLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    
+    @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +30,8 @@ class CharacterViewController: UIViewController {
 //        self.characterImageView.startAnimating()
         
         self.characterImageView.image = UIImage(named: "chemistry_2")
+        
+        self.stopActivity()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +77,66 @@ class CharacterViewController: UIViewController {
             self.progressView.setProgress(delta, animated: true)
         } else {
             self.progressView.setProgress(delta, animated: false)
+        }
+    }
+    
+    @IBAction func share(_ sender: Any) {
+        
+        let permissions = [VK_PER_WALL, VK_PER_PHOTOS]
+        
+        VKSdk.wakeUpSession(permissions) { (state, error) in
+            
+            if state != .authorized {
+                VKSdk.authorize(permissions)
+            } else {
+                
+                guard let photo = self.characterImageView.image else {
+                    return
+                }
+                
+                let photoRequest = VKApi.uploadAlbumPhotoRequest(photo, parameters: VKImageParameters.jpegImage(withQuality: 0.5), albumId: 260334342, groupId: 0)
+                
+                self.startActivity()
+                photoRequest?.execute(resultBlock: { response in
+                    guard let response = response else { return }
+
+                    let photo: VKPhoto = (response.parsedModel as! VKPhotoArray)[0]
+                    let photoAttachment = "\(photo.owner_id!)_\(photo.id!)"
+                    
+                    self.stopActivity()
+                    
+                    let dialog = VKShareDialogController()
+                    dialog.dismissAutomatically = true
+                    dialog.text = "Зацените какой-крутой у меня персонаж в Sirius.Connect 😍"
+                    dialog.vkImages = [photoAttachment]
+                    dialog.completionHandler = { (result, _) in
+                        print(result)
+                    }
+                    
+                    self.present(dialog, animated: true, completion: nil)
+
+                }, errorBlock: { error in
+                    print(error)
+                    
+                    self.stopActivity()
+                })
+            }
+        }
+    }
+    
+    func startActivity() {
+        
+        DispatchQueue.main.async {
+            self.activityView.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    func stopActivity() {
+        
+        DispatchQueue.main.async {
+            self.activityView.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
 }

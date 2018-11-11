@@ -166,7 +166,7 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         let achVC = controller?.viewControllers.last as? AchievementController
         achVC?.achievement = ach
         
-        if let topController = UIApplication.topViewController(), let vc = controller  {
+        if let topController = UIApplication.topViewController(), let vc = controller, !ach.isEmpty  {
             topController.present(vc, animated: true, completion: nil)
         }
     }

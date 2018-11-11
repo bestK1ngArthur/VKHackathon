@@ -91,7 +91,7 @@ class AppManager {
                 let values = rowString.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "{", with: "").replacingOccurrences(of: "}", with: "").replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "\r", with: "").components(separatedBy: ";")
                 
                 if values.indices.contains(2) {
-                    if values[2] == "name " {
+                    if values[2] == "name " && values[2] == "Москва" {
                         continue
                     }
                 }

@@ -462,6 +462,27 @@
                                 </constraints>
                                 <color key="progressTintColor" red="0.98227947950000005" green="0.65761703049999998" blue="0.12629829510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-l3-ZWc">
+                                <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Uf-R7-tFx">
+                                        <rect key="frame" x="11.5" y="11.5" width="37" height="37"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.65761703049999998" blue="0.12629829510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="FJ4-f0-lR8"/>
+                                    <constraint firstAttribute="height" constant="60" id="HYY-zd-Z12"/>
+                                    <constraint firstItem="6Uf-R7-tFx" firstAttribute="centerY" secondItem="UQr-l3-ZWc" secondAttribute="centerY" id="Rm3-NU-aoa"/>
+                                    <constraint firstItem="6Uf-R7-tFx" firstAttribute="centerX" secondItem="UQr-l3-ZWc" secondAttribute="centerX" id="syL-Jw-0JK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -474,14 +495,19 @@
                             <constraint firstItem="CIc-Uq-Lre" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="h3K-ha-3wi"/>
                             <constraint firstItem="8yT-e1-hSw" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="ji5-ap-AaT"/>
                             <constraint firstAttribute="trailing" secondItem="8yT-e1-hSw" secondAttribute="trailing" id="rCK-2w-dIu"/>
+                            <constraint firstItem="UQr-l3-ZWc" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="ufU-If-icx"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="qmF-iI-7ex" secondAttribute="bottom" constant="16" id="urm-iN-7fS"/>
                             <constraint firstItem="HCS-VB-5GX" firstAttribute="leading" secondItem="qmF-iI-7ex" secondAttribute="trailing" constant="4" id="xYB-Zs-9w0"/>
+                            <constraint firstItem="UQr-l3-ZWc" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="zfK-rV-MFk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Персонаж" id="pmV-DJ-yMX">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="nYE-DB-1tO">
                             <color key="tintColor" red="0.98227947950000005" green="0.65761703049999998" blue="0.12629829510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="share:" destination="8rJ-Kc-sve" id="Ub9-mR-MaO"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="logout" id="Mqr-Ut-d8B">
                             <color key="tintColor" red="0.98227947950000005" green="0.65761703049999998" blue="0.12629829510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -491,6 +517,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="6Uf-R7-tFx" id="OII-4y-sHI"/>
+                        <outlet property="activityView" destination="UQr-l3-ZWc" id="44V-nR-V2y"/>
                         <outlet property="characterImageView" destination="WRO-N7-vyT" id="4c1-BW-sIj"/>
                         <outlet property="levelValueLabel" destination="HCS-VB-5GX" id="Hqz-rd-ArV"/>
                         <outlet property="progressView" destination="8yT-e1-hSw" id="stJ-gr-SsR"/>
