@@ -51,6 +51,9 @@ class AppManager {
     var currentUserCategory: Achievement.Category {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: "category")
+            loadUserAchievements()
+            updateUserLevel()
+            needToUpdateLevels = true
         }
         
         get {
@@ -235,5 +238,20 @@ class AppManager {
         }
         
         currentUserLevel = level
+    }
+    
+    var characterImage: UIImage? {
+        
+        let level = Int(self.currentUserLevel)
+        switch currentUserCategory {
+        case .bio, .chem:
+            return UIImage(named: "chem_\(level)")
+        case .it, .phys:
+            return UIImage(named: "it_\(level)")
+        case .math, .proj:
+            return UIImage(named: "proj_\(level)")
+        default:
+            return nil
+        }
     }
 }

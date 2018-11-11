@@ -29,9 +29,15 @@ class CharacterViewController: UIViewController {
 //        self.characterImageView.animationDuration = 1.0
 //        self.characterImageView.startAnimating()
         
-        self.characterImageView.image = UIImage(named: "chemistry_2")
+        self.characterImageView.image = AppManager.shared.characterImage
         
         self.stopActivity()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.characterImageView.image = AppManager.shared.characterImage
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +48,7 @@ class CharacterViewController: UIViewController {
         let newLevel = AppManager.shared.currentUserLevel
         
         if oldLevel < 5 {
-            self.characterImageView.image = UIImage(named: "chemistry_\(Int(oldLevel))")
+            self.characterImageView.image = AppManager.shared.characterImage
         }
         
         self.levelValueLabel.text = "\(Int(oldLevel))"
@@ -61,7 +67,7 @@ class CharacterViewController: UIViewController {
             }, completion: { _ in
                 
                 if newLevel < 5 {
-                    self.characterImageView.image = UIImage(named: "chemistry_\(Int(newLevel))")
+                    self.characterImageView.image = AppManager.shared.characterImage
                 }
                 
                 UIView.animate(withDuration: 0.15, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {

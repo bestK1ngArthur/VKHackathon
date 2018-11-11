@@ -69,6 +69,15 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
             self.stopActivity()
             
             AppManager.shared.currentUserName = self.usernameField.text
+            
+            for (key, value) in self.selectedCategories {
+                if value.isEmpty == false {
+                    if let category = Achievement.Category(rawValue: key) {
+                        AppManager.shared.currentUserCategory = category
+                    }
+                }
+            }
+            
             self.dismiss(animated: true, completion: nil)
         }
         
