@@ -17,7 +17,10 @@ class AppManager {
     
     init() {
         loadAchievements()
+        loadUserAchievements()
     }
+    
+    var needToUpdateLevels: Bool = false
     
     var currentUserID: Int? {
         set {
@@ -44,10 +47,21 @@ class AppManager {
         }
     }
     
+    var currentUserCategory: Achievement.Category {
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "category")
+        }
+        
+        get {
+            return Achievement.Category(rawValue: (UserDefaults.standard.string(forKey: "category") ?? "")) ?? .chem
+        }
+    }
+    
     let categories: [(image: UIImage, title: String)] = [(image: UIImage(named: "it_ic")!, title: "Информационные технологии"), (image: UIImage(named: "math_ic")!, title: "Математика"), (image: UIImage(named: "chem_ic")!, title: "Химия"), (image: UIImage(named: "bio_ic")!, title: "Биология"), (image: UIImage(named: "phys_ic")!, title: "Физика"), (image: UIImage(named: "proj_ic")!, title: "Проектная смена")]
     
-    private(set) var achievements: [Achievement] = []
-    
+    private(set) var allAchievements: [Achievement] = []
+    private(set) var userAchievements: [Achievement] = []
+
     private func loadAchievements() {
         
         var achievements: [Achievement] = []
@@ -151,10 +165,33 @@ class AppManager {
 //
 //            let achievement = Achievement(title: title, description: description, address: address, url: url, complexity: complexity, isCompleted: false)
 //
-//            achievements.append(achievement)
+//            allAchievements.append(achievement)
 //        }
 
-        self.achievements = achievements
+        self.allAchievements = achievements
     }
     
+    func loadUserAchievements() {
+        self.userAchievements = self.achievements(for: self.currentUserCategory)
+    }
+    
+    func achievements(for category: Achievement.Category) -> [Achievement] {
+        
+        var achievements: [Achievement] = []
+        for achievement in allAchievements {
+            
+            if achievement.category == category {
+                achievements.append(achievement)
+            } else if Int.random(in: 0..<10) == 3 {
+                achievements.append(achievement)
+            }
+        }
+        
+        return achievements
+    }
+    
+    func addUserAchievement(_ achievement: Achievement) {
+        self.userAchievements.append(achievement)
+        self.needToUpdateLevels = true
+    }
 }

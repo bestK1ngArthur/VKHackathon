@@ -60,6 +60,11 @@ class AchievementController: UITableViewController {
     }
     
     @IBAction func goAction(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Супер!", message: "Мы заранее напомним вам о мероприятии 😎", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+        alert.view.tintColor = UIColor.orange
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func markAction(_ sender: Any) {

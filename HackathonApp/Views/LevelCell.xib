@@ -104,27 +104,41 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ra-Ep-TRi">
-                        <rect key="frame" x="16" y="8" width="343" height="17"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv5-iP-mkK">
+                        <rect key="frame" x="16" y="8" width="67" height="17"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-zA-CNq">
+                                <rect key="frame" x="4" y="0.0" width="59" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.65761703049999998" blue="0.12629829510000001" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NPh-zA-CNq" secondAttribute="trailing" constant="4" id="ALb-XX-MG8"/>
+                            <constraint firstItem="NPh-zA-CNq" firstAttribute="top" secondItem="Kv5-iP-mkK" secondAttribute="top" id="UCc-7F-EeT"/>
+                            <constraint firstItem="NPh-zA-CNq" firstAttribute="leading" secondItem="Kv5-iP-mkK" secondAttribute="leading" constant="4" id="vzW-Vw-mMt"/>
+                            <constraint firstAttribute="bottom" secondItem="NPh-zA-CNq" secondAttribute="bottom" id="yif-ek-xZJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="EXZ-ok-VYL" firstAttribute="leading" secondItem="7mW-DJ-nbv" secondAttribute="leading" id="CFg-I0-InO"/>
+                    <constraint firstItem="Kv5-iP-mkK" firstAttribute="top" secondItem="7mW-DJ-nbv" secondAttribute="top" constant="8" id="DQb-4R-iZe"/>
+                    <constraint firstItem="Kv5-iP-mkK" firstAttribute="leading" secondItem="7mW-DJ-nbv" secondAttribute="leading" constant="16" id="JuE-uV-b70"/>
                     <constraint firstAttribute="bottom" secondItem="EXZ-ok-VYL" secondAttribute="bottom" id="bh6-oS-Wlh"/>
                     <constraint firstAttribute="trailing" secondItem="EXZ-ok-VYL" secondAttribute="trailing" id="blE-NT-mCi"/>
-                    <constraint firstAttribute="trailing" secondItem="8ra-Ep-TRi" secondAttribute="trailing" constant="16" id="f0E-m6-Xga"/>
-                    <constraint firstItem="8ra-Ep-TRi" firstAttribute="leading" secondItem="7mW-DJ-nbv" secondAttribute="leading" constant="16" id="fDq-XP-IYm"/>
-                    <constraint firstItem="8ra-Ep-TRi" firstAttribute="top" secondItem="7mW-DJ-nbv" secondAttribute="top" constant="8" id="pUd-MB-GaS"/>
                     <constraint firstItem="EXZ-ok-VYL" firstAttribute="top" secondItem="7mW-DJ-nbv" secondAttribute="top" id="zPL-xf-qMR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="EXZ-ok-VYL" id="SxE-3O-aiA"/>
                 <outlet property="drawingView" destination="RmU-QC-E5k" id="AuD-1m-1j4"/>
-                <outlet property="titleLabel" destination="8ra-Ep-TRi" id="7zp-rT-aQK"/>
+                <outlet property="titleLabel" destination="NPh-zA-CNq" id="Rmx-eg-Z0j"/>
             </connections>
         </tableViewCell>
     </objects>

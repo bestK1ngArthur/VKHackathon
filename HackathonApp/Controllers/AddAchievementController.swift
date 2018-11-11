@@ -40,6 +40,18 @@ class AddAchievementController: UITableViewController, UIPickerViewDelegate, UIP
         
         // Добавляем на сервер
         
+        let category = Achievement.Category(rawValue: AppManager.shared.categories[categoriesPicker.selectedRow(inComponent: 0)].title) ?? .chem
+        
+        let ach = Achievement(title: titleLabel.text ?? "",
+                              description: descriptionLabel.text ?? "",
+                              address: addressLabel.text ?? "",
+                              url: URL(string: urlLabel.text ?? ""),
+                              complexity: Double(complexitySlider.value),
+                              isCompleted: false,
+                              category: category)
+        
+        AppManager.shared.addUserAchievement(ach)
+        
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +31,7 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.usernameField.delegate = self
         
         self.stopActivity()
     }
@@ -63,6 +64,13 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let string = "http://95.213.28.140:8080/?method=register&name=\(usernameField.text ?? "")&region=Moscow&stream1=\(selectedCategories["Информационные технологии"]!)&lvl1=8&stream2=\(selectedCategories["Математика"]!)&lvl2=0&stream3=\(selectedCategories["Химия"]!)&lvl3=0&stream4=\(selectedCategories["Биология"]!)&lvl4=0&stream5=\(selectedCategories["Физика"]!)&lvl5=0&stream6=\(selectedCategories["Проектная смена"]!)&lvl6=0"
         let url = URL(string: string)!
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            self.stopActivity()
+            
+            AppManager.shared.currentUserName = self.usernameField.text
+            self.dismiss(animated: true, completion: nil)
+        }
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             self.stopActivity()
@@ -121,5 +129,10 @@ class CategoriesController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

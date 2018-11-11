@@ -17,7 +17,7 @@ class LevelsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.achievements = AppManager.shared.achievements
+        self.achievements = AppManager.shared.userAchievements
         
         let container = LevelsContainer(achievements: achievements)
         
@@ -30,6 +30,22 @@ class LevelsController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         self.tableView.register(UINib(nibName: "LevelCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if AppManager.shared.needToUpdateLevels {
+            
+            self.achievements = AppManager.shared.userAchievements
+            
+            let container = LevelsContainer(achievements: achievements)
+            
+            self.levels = container.levels
+            self.paths = container.paths
+            
+            AppManager.shared.needToUpdateLevels = false
+        }
     }
     
     func printPaths() {
@@ -71,6 +87,16 @@ class LevelsController: UITableViewController {
 
         let string = "http://95.213.28.140:8080/?method=get_personal_events&user_id=\(AppManager.shared.currentUserID ?? 1)"
         let url = URL(string: string)!
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+
+            let container = LevelsContainer(achievements: self.achievements)
+            
+            self.levels = container.levels
+            self.paths = container.paths
+
+            self.updateTable()
+        }
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
 

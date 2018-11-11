@@ -27,6 +27,11 @@ class LevelsContainer {
     private func calculateLevels() {
         
         let achievements = self.achievements.sorted { (first, second) -> Bool in
+            
+            if first.complexity.rounded() == second.complexity.rounded() {
+                return first.isCompleted
+            }
+            
             return first.complexity < second.complexity
         }
         

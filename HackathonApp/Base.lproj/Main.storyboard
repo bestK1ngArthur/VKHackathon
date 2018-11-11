@@ -13,7 +13,7 @@
         <!--Стратегия-->
         <scene sceneID="juq-RX-wzz">
             <objects>
-                <tableViewController id="hDp-oD-Bqb" customClass="LevelsController" customModule="HackathonApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LevelsController" id="hDp-oD-Bqb" customClass="LevelsController" customModule="HackathonApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="26n-xV-AaD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,20 +130,34 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-YY-9oZ">
-                                            <rect key="frame" x="16" y="8" width="343" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGO-e9-ecI">
+                                            <rect key="frame" x="14" y="8" width="67" height="17"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-YY-9oZ">
+                                                    <rect key="frame" x="4" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.98039215690000003" green="0.65761703049999998" blue="0.12629829510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="0Tm-YY-9oZ" secondAttribute="trailing" constant="4" id="H5q-AF-8WT"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Tm-YY-9oZ" secondAttribute="bottom" id="WvF-KV-pSV"/>
+                                                <constraint firstItem="0Tm-YY-9oZ" firstAttribute="leading" secondItem="cGO-e9-ecI" secondAttribute="leading" constant="4" id="Yyh-13-eXt"/>
+                                                <constraint firstItem="0Tm-YY-9oZ" firstAttribute="top" secondItem="cGO-e9-ecI" secondAttribute="top" id="c0p-ms-5aX"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ehr-w2-qmr" secondAttribute="trailing" id="6FO-za-son"/>
+                                        <constraint firstItem="cGO-e9-ecI" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" constant="14" id="Guy-fE-t7i"/>
+                                        <constraint firstItem="cGO-e9-ecI" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" constant="8" id="MiV-xR-dOI"/>
                                         <constraint firstAttribute="bottom" secondItem="Ehr-w2-qmr" secondAttribute="bottom" id="TUI-MV-3cN"/>
-                                        <constraint firstItem="0Tm-YY-9oZ" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" constant="16" id="W5S-mr-xDc"/>
                                         <constraint firstItem="Ehr-w2-qmr" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" id="jA7-pI-ets"/>
-                                        <constraint firstAttribute="trailing" secondItem="0Tm-YY-9oZ" secondAttribute="trailing" constant="16" id="jSt-be-bhR"/>
-                                        <constraint firstItem="0Tm-YY-9oZ" firstAttribute="top" secondItem="SkA-TN-2cc" secondAttribute="top" constant="8" id="uNE-Gs-nT4"/>
                                         <constraint firstItem="Ehr-w2-qmr" firstAttribute="leading" secondItem="SkA-TN-2cc" secondAttribute="leading" id="xhz-Jz-LIp"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1055,7 +1069,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WUJ-GX-gwJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I3h-ST-Odv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AchievementController" automaticallyAdjustsScrollViewInsets="NO" id="I3h-ST-Odv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c22-Za-3o3">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

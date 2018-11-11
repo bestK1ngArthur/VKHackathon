@@ -156,4 +156,35 @@ class LevelCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         
         self.drawPaths()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ach = achievements[indexPath.row]
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AchievementController") as? UINavigationController
+        
+        let achVC = controller?.viewControllers.last as? AchievementController
+        achVC?.achievement = ach
+        
+        if let topController = UIApplication.topViewController(), let vc = controller  {
+            topController.present(vc, animated: true, completion: nil)
+        }
+    }
+}
+
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
 }
