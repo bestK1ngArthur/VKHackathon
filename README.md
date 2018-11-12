@@ -18,7 +18,7 @@
 
 Сервис Сириус.Коннект
 
-<p align="left">
+<p align="center">
   <img src="https://github.com/bestK1ngArthur/VKHackathon/blob/master/App/HackathonApp/Assets.xcassets/AppIcon.appiconset/Icon.png" width="150" alt="ScheduleController"/>
 </p>
 
