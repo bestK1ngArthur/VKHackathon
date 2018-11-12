@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.7.3)
+  - CSV.swift (2.2.1)
+  - VK-ios-sdk (1.4.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - CSV.swift (~> 2.2.1)
+  - VK-ios-sdk
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CSV.swift
+    - VK-ios-sdk
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  CSV.swift: 5bf3338aff82371cb51cc6dc559d7b45a74bab14
+  VK-ios-sdk: 7fd48bc5aaa6b96c3197c1987eb6593f2ea67331
+
+PODFILE CHECKSUM: 2fa42dcd844af84cd32560f4c9ae005f46267334
+
+COCOAPODS: 1.5.0
